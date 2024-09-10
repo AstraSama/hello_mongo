@@ -1,31 +1,31 @@
 const Pet = require("../Models/pet_model.js");
 
-const store = (req, res) => {
-    Pet.create(req.body);
+const store = async(req, res) => {
+    await Pet.create(req.body);
     res.json();
 
 }
 
-const index = (req, res) => {
-    const content = Pet.find().exec();
+const index = async(req, res) => {
+    const content = await Pet.find().exec();
     res.json(content);
 
 }
 
-const show = (req, res) => {
-    const content = Pet.findById(req.params.id).exec();
+const show = async(req, res) => {
+    const content = await Pet.findById(req.params.id).exec();
     res.json(content);
 
 }
 
-const update = (req, res) => {
-    Pet.findByIdAndUpdate(req.params.id, req.body).exec();
+const update = async(req, res) => {
+    await Pet.findByIdAndUpdate(req.params.id, req.body).exec();
     res.json();
 
 }
 
-const destroy = (req, res) => {
-    Pet.findByIdAndRemove(req.params.id).exec();
+const destroy = async(req, res) => {
+    await Pet.findByIdAndRemove(req.params.id).exec();
     res.json();
     
 }
